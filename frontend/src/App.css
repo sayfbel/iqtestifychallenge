@@ -1,0 +1,221 @@
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  --card-bg: rgba(230, 230, 230, 0.85);
+  --primary-text: #333;
+  --btn-color: #766d94;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  /* Creating the mesh gradient background */
+  background: radial-gradient(circle at 10% 20%, rgb(111, 86, 119) 0%, rgb(86, 78, 116) 40%, rgb(67, 54, 74) 90%);
+  color: white;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 20px 20px 0 20px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Global Quiz Result Styles */
+.result-container {
+  background: white;
+  border-radius: 30px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  position: relative;
+  z-index: 10;
+}
+
+.result-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #6a5acd 0%, #896279 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.result-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8fafc;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #334155;
+}
+
+.result-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Responsive Tables with Sticky Rank */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  /* min-width removed to allow natural resizing, scroll triggered by nowrap content */
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  white-space: nowrap;
+  /* Prevent wrapping */
+}
+
+/* Sticky First Column (Rank) */
+th:first-child,
+td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
+  /* Separator line */
+}
+
+th:first-child {
+  z-index: 20;
+  /* Header stays on top of sticky column */
+  /* background comes from inline style or var, ensured to be opaque-ish */
+}
+
+td:first-child {
+  background: rgba(255, 255, 255, 0.95);
+  /* Opaque background for scrolling */
+  backdrop-filter: blur(10px);
+  font-weight: 700;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+  .layout {
+    padding: 10px;
+  }
+
+  #root {
+    padding: 0;
+  }
+
+  .contenar {
+    /* Header container in pages */
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .btne {
+    /* Start button */
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+.layout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 20px 20px 0 20px;
+  min-height: 100vh;
+}
+
+/* Ambient Background Blobs to enhance glass effect */
+.ambient-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(180deg, #a48cbd 0%, #6868ac 100%);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Hide nav links on mobile for simplicity */
+  }
+
+  .layout {
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}

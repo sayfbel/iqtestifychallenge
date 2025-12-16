@@ -1,0 +1,253 @@
+/* --- Main Layout --- */
+.main-container {
+    width: 100%;
+    max-width: 62.5rem;
+    /* 1000px */
+    /* The large glass panel holding the hero title */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.875rem;
+    /* 30px */
+    padding: 3.75rem 2.5rem;
+    /* 60px 40px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 37.5rem;
+    /* 600px */
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    /* Pushing content down to make room for absolute cards or just spacing */
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.95);
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 240px;
+    /* Maintains the negative margin offset for cards */
+}
+
+/* --- Cards Section --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    margin-top: -180px;
+    /* Pulling cards up into the Hero space */
+}
+
+.card {
+    background: var(--card-bg);
+    /* Semi-opaque white/grey */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(20px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Internal Card Visuals (The colored gradients with icons) */
+.card-visual {
+    height: 180px;
+    /* Increased slightly for better image visibility */
+    border-radius: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+/* Card Text */
+.card h2 {
+    color: #000;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--btn-color);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(118, 109, 148, 0.4);
+    transition: background 0.3s;
+    background: linear-gradient(to right, #7a6e91, #8e84a8);
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 2rem 1.25rem;
+        /* 30px 20px */
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 3.125rem;
+        /* 50px */
+    }
+
+    .cards-grid {
+        margin-top: 0;
+    }
+
+    .hero-subtitle {
+        margin-bottom: 50px;
+    }
+}
+
+/* Info / Guide Section */
+.info-container {
+    margin-top: 40px;
+    padding: 40px;
+    width: 100%;
+}
+
+.info-container h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #4a4a4a;
+}
+
+.guide-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.guide-list li {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: transform 0.2s;
+}
+
+.guide-list li:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.guide-list strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent-primary, #6b5b95);
+    /* Fallback color */
+    font-size: 1.1rem;
+}
+
+/* Vision / Roadmap Section */
+.vision-content p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.roadmap-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.roadmap-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 120px;
+    transition: all 0.3s;
+}
+
+.roadmap-item:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-5px);
+}
+
+.roadmap-item i {
+    font-size: 2.5rem;
+    color: #555;
+    /* Default icon color */
+}
+
+/* Icon specific colors for vibrance */
+.roadmap-item .fa-html5 {
+    color: #e34f26;
+}
+
+.roadmap-item .fa-css3-alt {
+    color: #1572b6;
+}
+
+.roadmap-item .fa-js {
+    color: #f7df1e;
+}
+
+.roadmap-item .fa-server {
+    color: #3776ab;
+}
+
+.roadmap-item span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+}

@@ -1,0 +1,573 @@
+.math-quiz-wrapper {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+    background: transparent;
+}
+
+.math-quiz-container {
+    background: white;
+    border-radius: 30px;
+    padding: 3rem;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.math-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.math-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #6a5acd;
+    /* Slate Blue / Purple */
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title-separator {
+    height: 6px;
+    background: #e2e8f0;
+    width: 100%;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #896279, #9C7CA5);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Visual Stage */
+.visual-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: 140px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
+    position: relative;
+}
+
+.visual-item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* If Visual */
+.if-block {
+    /* Inherits from cup-container-wrapper via HTML class but we can add specific styles */
+    position: relative;
+    padding-bottom: 15px;
+    /* Space for label */
+    margin: 0 5px;
+    /* Reduce margin */
+}
+
+.if-block .cup-content {
+    gap: 0.5rem;
+}
+
+.if-label {
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #94a3b8;
+    /* Match border color */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 4px;
+    text-transform: lowercase;
+}
+
+.math-operator {
+    font-size: 3rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.math-operator.small {
+    font-size: 2rem;
+}
+
+.math-operator.text-op {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.result-placeholder {
+    font-size: 4rem;
+    font-weight: 800;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    background: transparent;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+
+/* Cup Container Visual */
+.cup-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0 20px 10px 20px;
+    border: 15px solid #94a3b8;
+    /* Slate 400 - Thicker grey border */
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    background: transparent;
+    margin: 0 1rem;
+    position: relative;
+}
+
+.cup-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 5px;
+}
+
+/* Loop Arrow Visual */
+.loop-arrow-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: help;
+}
+
+/* Shapes */
+.shape-item {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shape-item:hover {
+    transform: scale(1.05);
+}
+
+.shape-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+.shape-number {
+    background: transparent;
+    box-shadow: none;
+    width: auto;
+}
+
+.shape-square {
+    background: #896279;
+    border-radius: 12px;
+}
+
+.shape-square::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+}
+
+.shape-square span {
+    display: none;
+}
+
+
+.shape-circle {
+    background: #f59e0b;
+    /* Amber */
+    border-radius: 50%;
+}
+
+.shape-circle::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.shape-circle span {
+    display: none;
+}
+
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #10b981;
+    /* Emerald Green */
+    background: transparent;
+    box-shadow: none;
+    filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.1));
+}
+
+.shape-triangle span {
+    display: none;
+}
+
+/* Value Popover */
+.value-popover {
+    position: absolute;
+    top: -35px;
+    background: #1e293b;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.shape-item:hover .value-popover,
+.cup-container-wrapper:hover>.value-popover,
+.loop-arrow-wrapper:hover .value-popover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Code Area */
+.code-area {
+    background: #fdfdfd;
+    width: 100%;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    color: #334155;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.token-var {
+    color: #f43f5e;
+}
+
+.token-num {
+    color: #d97706;
+}
+
+.token-op {
+    color: #8b5cf6;
+}
+
+.token-func {
+    color: #3b82f6;
+}
+
+.token-str {
+    color: #10b981;
+}
+
+.token {
+    position: relative;
+    cursor: help;
+}
+
+.token-tooltip {
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #334155;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    width: max-content;
+    max-width: 250px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    z-index: 100;
+    text-align: left;
+    white-space: pre-line;
+}
+
+.token:hover .token-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Interaction Area */
+.interaction-area {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.math-input {
+    width: 120px;
+    height: 50px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #475569;
+    background: white;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.math-input:focus {
+    border-color: #896279;
+    background: #fdfbfd;
+}
+
+.math-btn {
+    padding: 0 40px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    background: #896279;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(137, 98, 121, 0.3);
+    transition: all 0.2s;
+}
+
+.math-btn:hover {
+    background: #755266;
+    transform: translateY(-2px);
+}
+
+.animate-shake {
+    animation: shake 0.4s ease-in-out;
+    border-color: #ef4444;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.feedback-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 50;
+}
+
+.feedback-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.feedback-card {
+    text-align: center;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.feedback-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.feedback-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+/* Quiz Controls */
+.quiz-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.timer-display {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.end-btn {
+    background: #fee2e2;
+    color: #ef4444;
+    border: 2px solid #fecaca;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.end-btn:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+/* Result Screen */
+.result-container {
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.result-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin: 3rem 0;
+    width: 100%;
+    justify-content: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f8fafc;
+    padding: 1.5rem 2.5rem;
+    border-radius: 16px;
+    width: 200px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #334155;
+}
+
+@media (max-width: 600px) {
+    .math-quiz-wrapper {
+        padding: 0.5rem;
+    }
+
+    .math-quiz-container {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .math-title {
+        font-size: 1.8rem;
+    }
+
+    .visual-stage {
+        padding: 1rem;
+        overflow-x: auto;
+        /* Allow scroll if visuals are wide */
+        justify-content: flex-start;
+        /* Align left to prevent cut-off */
+    }
+
+    .cup-container-wrapper {
+        border-width: 10px;
+        padding: 0 10px 5px 10px;
+    }
+
+    .interaction-area {
+        flex-direction: column;
+    }
+
+    .math-btn {
+        width: 100%;
+    }
+}

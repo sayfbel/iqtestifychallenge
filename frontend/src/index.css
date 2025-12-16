@@ -1,0 +1,245 @@
+:root {
+  /* Palette from user */
+  --color-stone-brown: #594F3B;
+  --color-ash-brown: #776258;
+  --color-dusty-lavender: #896279;
+  --color-amethyst-smoke: #9C7CA5;
+  --color-periwinkle: #ADB2D3;
+
+  /* Theme Mapping */
+  --bg-primary: #ffffff;
+  --bg-secondary: var(--color-periwinkle);
+  /* Sidebar bg */
+  --bg-card: #ffffff;
+
+  --text-primary: var(--color-stone-brown);
+  --text-secondary: var(--color-ash-brown);
+
+  --accent-primary: var(--color-dusty-lavender);
+  --accent-secondary: var(--color-amethyst-smoke);
+
+  --glass-border: rgba(89, 79, 59, 0.1);
+  /* derived from stone brown */
+  --font-main: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --shadow-color: rgba(119, 98, 88, 0.15);
+  /* ash brown shadow */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-amethyst-smoke);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Glassmorphism Utilities - Modified for Light Theme */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.glass-panel {
+  width: 100%;
+  border-radius: 16px;
+  padding: 24px;
+  background: #ffffff;
+  /* Solid white for better contrast on light bg */
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px var(--shadow-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.glass-panel:hover {
+  box-shadow: 0 10px 25px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  width: 100%;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  gap: 1rem;
+  min-height: 100vh;
+}
+
+.contenar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  height: 40px;
+  padding: 0 2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent-primary);
+  color: white;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  padding-top: 100px;
+}
+
+/* Components */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent-primary);
+  color: white;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+th {
+  background: var(--color-periwinkle);
+  color: var(--text-primary);
+  padding: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+td {
+  padding: 16px;
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-primary);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: rgba(156, 124, 165, 0.1);
+  /* amethyst smoke tint */
+}
+
+/* Ranks colors suitable for light background */
+.rank-1 {
+  color: #d97706;
+  font-weight: bold;
+}
+
+/* Darker gold */
+.rank-2 {
+  color: #6b7280;
+  font-weight: bold;
+}
+
+.rank-3 {
+  color: #92400e;
+  font-weight: bold;
+}
+
+/* Darker bronze */
+.contenar {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.btne {
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}

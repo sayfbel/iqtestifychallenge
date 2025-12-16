@@ -1,0 +1,77 @@
+.main-footer {
+    margin-top: auto;
+    width: 100%;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.creator-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.creator-info p {
+    margin: 0;
+    color: #333;
+}
+
+.creator-info .badge {
+    font-size: 0.75rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.github-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.github-link:hover {
+    color: #764ba2;
+}
+
+.tech-stack {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.tech-stack span:first-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .creator-info {
+        align-items: center;
+    }
+}
